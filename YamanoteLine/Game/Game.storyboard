@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="GameViewController" customModule="YamanoteLine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9SO-6z-z6h" customClass="GADBannerView">
+                                <rect key="frame" x="35" y="47" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="X2Z-b8-JjJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="nql-Ti-s6X"/>
+                                </constraints>
+                            </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8zf-Lz-YWD">
+                                <rect key="frame" x="20" y="117" width="350" height="4"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jj0-Nb-SbX">
+                                <rect key="frame" x="40" y="151" width="310" height="278"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agl-6M-PO5">
+                                <rect key="frame" x="0.0" y="459" width="390" height="211"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="UTL-PD-j1d"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="cr8-9X-xlA"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3x-wn-Wu7">
+                                <rect key="frame" x="50" y="690" width="290" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="nWg-Fa-2IJ"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="解答"/>
+                                <connections>
+                                    <action selector="answerYamanoteLine:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8wn-SB-DJG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jj0-Nb-SbX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="77n-J8-Dht"/>
+                            <constraint firstItem="agl-6M-PO5" firstAttribute="top" secondItem="Jj0-Nb-SbX" secondAttribute="bottom" constant="30" id="8Eh-v8-FtG"/>
+                            <constraint firstItem="agl-6M-PO5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9MW-J0-YDP"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8zf-Lz-YWD" secondAttribute="trailing" constant="20" id="9fZ-4X-zkd"/>
+                            <constraint firstItem="g3x-wn-Wu7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="DwJ-Pi-Mt4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="g3x-wn-Wu7" secondAttribute="trailing" constant="50" id="E0P-gN-rkW"/>
+                            <constraint firstItem="g3x-wn-Wu7" firstAttribute="top" secondItem="agl-6M-PO5" secondAttribute="bottom" constant="20" id="F4o-hB-iiV"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Jj0-Nb-SbX" secondAttribute="trailing" constant="40" id="ItJ-KU-4zy"/>
+                            <constraint firstItem="9SO-6z-z6h" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="RGR-CX-xcl"/>
+                            <constraint firstItem="Jj0-Nb-SbX" firstAttribute="top" secondItem="8zf-Lz-YWD" secondAttribute="bottom" constant="30" id="RQP-yx-Phe"/>
+                            <constraint firstItem="agl-6M-PO5" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.25" id="Z7O-W3-jmW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="g3x-wn-Wu7" secondAttribute="bottom" constant="50" id="cQf-Ar-uY4"/>
+                            <constraint firstItem="8zf-Lz-YWD" firstAttribute="top" secondItem="9SO-6z-z6h" secondAttribute="bottom" constant="20" id="fmk-Lb-JD0"/>
+                            <constraint firstItem="8zf-Lz-YWD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="hQz-cE-Ufj"/>
+                            <constraint firstItem="agl-6M-PO5" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="nT3-39-36z"/>
+                            <constraint firstItem="9SO-6z-z6h" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="qtC-bH-kBC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="answerButton" destination="g3x-wn-Wu7" id="paq-Va-j7L"/>
+                        <outlet property="answerPieckerView" destination="agl-6M-PO5" id="jJB-pJ-RbJ"/>
+                        <outlet property="answerTimerProgressView" destination="8zf-Lz-YWD" id="tLL-Yb-I7c"/>
+                        <outlet property="bannerView" destination="9SO-6z-z6h" id="ALP-cW-ags"/>
+                        <outlet property="quizTextLabel" destination="Jj0-Nb-SbX" id="Wo1-Dx-uIh"/>
+                        <segue destination="BkU-Sa-QjG" kind="show" identifier="result" destinationCreationSelector="makeResultVCWithCoder:sender:segueIdentifier:" id="bsp-zD-UDU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.76923076923077" y="-34.123222748815166"/>
+        </scene>
+        <!--Result-->
+        <scene sceneID="H2e-sc-IFL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Result" id="BkU-Sa-QjG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rS5-K7-tvK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cl5-m4-fzv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="807" y="-28"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
