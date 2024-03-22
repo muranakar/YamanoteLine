@@ -27,12 +27,10 @@ class GameViewController: UIViewController {
 
     // MARK: - 広告関係のプロパティ
     @IBOutlet weak private var bannerView: GADBannerView!
-    private var interstitial: GADInterstitialAd?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAdBannar()
-        configureInterstitialAd()
         initializeProgress()
         startProgressTimer()
         configureViewQuizTextLabel()
@@ -60,7 +58,7 @@ class GameViewController: UIViewController {
             playSound(name: "miss")
             if yamanoteLineGame.missCount == 5 {
                 audioPlayer.stop()
-                showGoogleIntitialAdAndPerformSegue()
+                performSegue(withIdentifier: "result", sender: nil)
             }
         }
     }
@@ -98,30 +96,7 @@ class GameViewController: UIViewController {
         // 広告読み込み
         bannerView.load(GADRequest())
     }
-    private func configureInterstitialAd() {
-        // インタースティシャル広告
-        let request = GADRequest()
-        GADInterstitialAd.load(
-            withAdUnitID: GoogleAdID.gameScreenInterstitialID,
-            request: request,
-            completionHandler: { [self] ad, error in
-                if let error = error {
-                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                    return
-                }
-                interstitial = ad
-                interstitial?.fullScreenContentDelegate = self
-            }
-        )
-    }
-    //　Google広告を1回に表示するメソッド
-    func showGoogleIntitialAdAndPerformSegue() {
-        if interstitial != nil {
-            interstitial?.present(fromRootViewController: self)
-        } else {
-            performSegue(withIdentifier: "result", sender: nil)
-        }
-    }
+
     //MARK: - progress
     private func initializeProgress() {
         progressDuration = 1.0
@@ -145,11 +120,11 @@ class GameViewController: UIViewController {
         if progressDuration <= 0.0 {
             stopProgressTimer()
             guard let audioPlayer = audioPlayer else {
-                showGoogleIntitialAdAndPerformSegue()
+                performSegue(withIdentifier: "result", sender: nil)
                 return
             }
             audioPlayer.stop()
-            showGoogleIntitialAdAndPerformSegue()
+            performSegue(withIdentifier: "result", sender: nil)
         }
     }
 
@@ -170,16 +145,6 @@ private extension GameViewController {
     }
 }
 
-extension GameViewController: GADFullScreenContentDelegate {
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        performSegue(withIdentifier: "result", sender: nil)
-    }
-    /// Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        performSegue(withIdentifier: "result", sender: nil)
-    }
-}
 
 extension GameViewController: AVAudioPlayerDelegate {
     func playSound(name: String) {
